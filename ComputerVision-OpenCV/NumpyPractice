@@ -1,0 +1,27 @@
+import os
+import numpy as np
+import matplotlib.pyplot as plt
+from PIL import Image
+
+#Open image file
+dirname = os.path.dirname(__file__)
+filename = os.path.join(dirname, 'Resources/Puppy.jpg')
+picture = Image.open(filename)
+
+#Get the array values from image
+pictureArray = np.asarray(picture)
+
+#Access channels
+#R G B
+pictureRed = pictureArray.copy()
+print(pictureRed)
+pictureRed = pictureRed[:,:,0]
+#[[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],
+# [0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],
+# [0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],
+# [0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],
+# [0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],]
+#
+
+print(pictureRed)
+plt.imsave(os.path.join(dirname, "Resources/PuppyNoRed.jpg"), pictureRed)
